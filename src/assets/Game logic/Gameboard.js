@@ -7,6 +7,12 @@ export default class Gameboard {
   }
 
   placeShip(ship, x, y) {
+      if(
+        ship.direction == 'Horizontal' && x + ship.length > SIZE ||
+        ship.direction == 'Vertical' && y + ship.length > SIZE
+        ) 
+      return;
+
     for(let i = 0; i < ship.length; i++) {
       this.boardArr[x][y] = { ship, index: i };
 

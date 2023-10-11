@@ -15,4 +15,10 @@ export default class Ship {
     this.hits++;
     this.isShipSunk();
   }
+
+  switchDirection() {
+    this.direction === 'Horizontal' ?
+      this.direction = 'Vertical' :
+      this.direction = 'Horizontal';
+  }
 }

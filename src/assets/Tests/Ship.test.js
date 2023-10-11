@@ -30,3 +30,21 @@ describe('ship is being hit', () => {
     expect(ship.isSunk).toBeTruthy();
   });
 });
+
+describe('ship changes direction', () => {
+  it('ship is created horizontally', () => {
+    expect(ship.direction).toStrictEqual('Horizontal');
+  });
+
+  it('ship has changed to Vertical', () => {
+    ship.switchDirection();
+    expect(ship.direction).toStrictEqual('Vertical');
+  });
+
+  it('After 2 changes direction is horizontal', () => {
+    ship.direction = 'Horizontal';
+    ship.switchDirection();
+    ship.switchDirection();
+    expect(ship.direction).toStrictEqual('Horizontal');
+  });
+});
