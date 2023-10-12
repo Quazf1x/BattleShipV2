@@ -46,7 +46,7 @@ describe('Gameboard recieves hits correctly', () => {
 
   it('ship gets shot once', () => {
     
-    gameboard.placeShip(1, 4, 3, 'Vertical');
+    gameboard.placeShip(1, 4, 1, 'Vertical');
     gameboard.receiveAttack(2, 1);
     expect(gameboard.boardArr[2][1].ship.hits).toBe(1);
   });
@@ -71,4 +71,20 @@ describe('Gameboard recieves hits correctly', () => {
   it('none of the shots hit the second ship', () => {
     expect(gameboard.ships[1].hits).toBe(0);
   });
-})
+});
+
+describe('Gameboard recieves hits correctly', () => {
+  it('ships are not sunk yet before shots', () => {
+    expect(gameboard.areAllShipsSunk()).toBeFalsy();
+  });
+
+  it('after all ships are sunk. reports it as true', () => {
+    gameboard.receiveAttack(1, 4);
+    gameboard.receiveAttack(1, 1);
+    gameboard.receiveAttack(2, 1);
+    gameboard.receiveAttack(3, 1);
+    gameboard.receiveAttack(4, 1);
+    
+    expect(gameboard.areAllShipsSunk()).toBeTruthy();
+  })
+});

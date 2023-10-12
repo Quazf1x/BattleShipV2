@@ -38,4 +38,8 @@ export default class Gameboard {
     }
     this.ships.push(ship);
   }
+
+  areAllShipsSunk() {
+    return this.ships.every(ship => ship.isSunk);
+  }
 }
