@@ -1,3 +1,5 @@
+import Ship from "./Ship";
+
 const SIZE = 10;
 
 export default class Gameboard {
@@ -6,7 +8,22 @@ export default class Gameboard {
     this.ships = [];
   }
 
-  placeShip(ship, x, y) {
+  receiveAttack(x, y) {
+    if(this.boardArr[x][y] == null) {
+      this.boardArr[x][y] = 'miss';
+      return;
+    }
+    else if (this.boardArr[x][y].isHit) {
+      return;
+    }
+    else {
+      this.boardArr[x][y].isHit = true;
+      this.boardArr[x][y].ship.hit();
+    }
+  }
+
+  placeShip(x, y, length, direction = 'Horizontal') {
+    let ship = new Ship(length, direction);
       if(
         ship.direction == 'Horizontal' && x + ship.length > SIZE ||
         ship.direction == 'Vertical' && y + ship.length > SIZE
@@ -14,7 +31,7 @@ export default class Gameboard {
       return;
 
     for(let i = 0; i < ship.length; i++) {
-      this.boardArr[x][y] = { ship, index: i };
+      this.boardArr[x][y] = {ship, isHit: false};
 
       ship.direction == 'Horizontal' ?
       x++ : y++;
