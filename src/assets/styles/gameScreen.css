@@ -1,0 +1,21 @@
+main {
+  display: grid;
+  grid-template: 1fr / 1fr 5rem 1fr;
+  gap: 3rem;
+  height: 90%;
+  padding: 2rem 5rem;
+}
+
+.player-card {
+  display: grid;
+  grid-template: 4rem 1fr / 1fr;
+  justify-items: center;
+}
+
+.player-card > h2 {
+  align-items: center;
+  display: flex;
+  text-transform: uppercase;
+  font-weight: 400;
+  width: 100%;
+}
