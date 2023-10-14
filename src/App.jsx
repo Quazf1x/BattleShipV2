@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import './assets/styles/index.css'
+import Header from './assets/Components/Elements/Header'
 
 function App() {
 
   return (
     <>
-      
+      <Header/>
     </>
   )
 }

@@ -1,0 +1,24 @@
+header {
+  background-color: var(--darker-white);
+  border-bottom: 2px solid var(--grey-border);
+  display: flex;
+  justify-content: center;
+  height: 3rem;
+}
+
+header > div:first-child {
+  align-items: center;
+  display: flex;
+}
+
+header > div:first-child > img {
+  height: 30px;
+  width: 30px;
+  margin: 0 1rem;
+}
+
+#website-name {
+  cursor: default;
+  text-transform: uppercase;
+  font-weight: 400;
+}
