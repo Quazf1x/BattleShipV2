@@ -1,6 +1,6 @@
 header {
   background-color: var(--darker-white);
-  border-bottom: 2px solid var(--grey-border);
+  border-bottom: 2px solid var(--light-grey);
   display: flex;
   justify-content: center;
   height: 3rem;

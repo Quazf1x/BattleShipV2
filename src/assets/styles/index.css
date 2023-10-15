@@ -1,12 +1,10 @@
 :root {
   --white: #fff;
   --darker-white: #f4f4f4;
-  --grey-border: #eaeaea;
   --bright-pink: #e7004c;
-  --light-grey: #d4d4d4;
+  --light-grey: #eaeaea;
   --dark-grey: #66708a;
   --light-blue: #bce8fd;
-  --grey: #bebebe;
   --darker-blue: #8dcae6;
 }
 
@@ -25,4 +23,10 @@ body {
 
 #root {
   height: 100%;
+}
+
+.vertical-border {
+  background-color: var(--light-grey);
+  border: none;
+  border-radius: 1rem;
 }

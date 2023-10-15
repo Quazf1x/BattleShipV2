@@ -8,6 +8,7 @@ function GameScreen() {
   return (
     <main>
       <PlayerCard player={player1} color='pink'/>
+      <hr className='vertical-border'></hr>
       <PlayerCard player={player2} color='grey'/>
     </main>
   )
