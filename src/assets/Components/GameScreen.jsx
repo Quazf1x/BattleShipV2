@@ -1,10 +1,7 @@
 import PlayerCard from "./PlayerCard";
 import Player from "../Game logic/Player";
 
-const player1 = new Player('you');
-const player2 = new Player('ai');
-
-function GameScreen() {
+function GameScreen({player1, player2}) {
   return (
     <main>
       <PlayerCard player={player1} color='pink'/>
