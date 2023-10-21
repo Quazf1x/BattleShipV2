@@ -29,7 +29,7 @@ export default class Gameboard {
     if(!valid) return false;
 
     for(let i = 0; i < ship.length; i++) {
-      this.boardArr[x][y] = {ship, isHit: false, index: i};  // remove index later
+      this.boardArr[x][y] = {ship, isHit: false}; 
 
       ship.direction == 'Horizontal' ?
       x++ : y++;
