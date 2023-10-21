@@ -1,8 +1,8 @@
-export default function StartScreen({ handleClick }) {
+export default function StartScreen({ handleInput, handleClick }) {
   return(
     <main className="start-main">
       <h1>Enter your name</h1>
-      <input maxLength="25"/>
+      <input onChange={handleInput} maxLength="25"/>
       <button onClick={handleClick}>Start</button>
     </main>
   )

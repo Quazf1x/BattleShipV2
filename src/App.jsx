@@ -8,16 +8,21 @@ let P1, P2;
 
 function App() {
   const [gameState, setGameState] = useState('Start');
+  const [playerName, setPlayerName] = useState('');
 
   const handleStart = () => {
     setGameState('Game');
+  }
+
+  const handleNameChange = (e) => {
+    setPlayerName(e.target.value);
   }
 
   let screen;
 
   switch(gameState) {
     case 'Start':
-      screen = <StartScreen handleClick={handleStart}/>
+      screen = <StartScreen handleInput={handleNameChange} handleClick={handleStart}/>
       break;
     case 'Game':
       screen = <GameScreen player1={P1} player2={P2}/>
@@ -25,7 +30,7 @@ function App() {
   }
 
   const startGame = () => {
-    P1 = new Player('p1');
+    P1 = new Player(playerName);
     P2 = new Player('AI');
     P1.board.autoPlaceFleet();
     P2.board.autoPlaceFleet();
