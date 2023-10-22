@@ -8,10 +8,17 @@ import Player from './assets/Game logic/Player'
 let P1, P2;
 
 function App() {
-  const [gameState, setGameState] = useState('Map Edit');
-  const [playerName, setPlayerName] = useState('');
+  const [gameState, setGameState] = useState('Start');
+  const [playerName, setPlayerName] = useState('');  
+
+  const startGame = () => {
+    P1 = new Player(playerName);
+    P2 = new Player('AI');
+    P2.board.autoPlaceFleet();
+  }
 
   const handleStart = () => {
+    startGame();
     setGameState('Map Edit');
   }
 
@@ -32,15 +39,6 @@ function App() {
       screen = <GameScreen player1={P1} player2={P2}/>
       break;
   }
-
-  const startGame = () => {
-    P1 = new Player(playerName);
-    P2 = new Player('AI');
-    P1.board.autoPlaceFleet();
-    P2.board.autoPlaceFleet();
-  }
-
-  startGame();
 
   return (
     <>

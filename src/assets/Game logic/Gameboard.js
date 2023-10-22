@@ -9,6 +9,10 @@ export default class Gameboard {
     this.ships = [];
   }
 
+  clearBoard() {
+    this.boardArr = Array(SIZE).fill(null).map(() => Array(SIZE).fill(null));
+  }
+
   receiveAttack(x, y) {
     if(this.boardArr[x][y] == null) {
       this.boardArr[x][y] = 'miss';
@@ -67,6 +71,7 @@ export default class Gameboard {
   }
 
   autoPlaceFleet() {
+    this.clearBoard();
     for(let i = 1; i <= 5; i++) {
       this.autoPlaceShip(i);
     }
