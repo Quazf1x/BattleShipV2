@@ -1,4 +1,4 @@
-function Grid ({ player, color }) {
+function Grid ({ player, color, handlePlacement }) {
 
   const cellColor = color == 'pink' ? 'var(--light-blue)' : 'var(--light-grey)';
   const takenCell = color == 'pink' ? 'var(--darker-blue)' : 'var(--grey)';
@@ -6,13 +6,13 @@ function Grid ({ player, color }) {
   return (
   <div className='game-grid'>
     {
-      player.board.boardArr.map((column, indexC) => {
+      player.board.boardArr.map((columnC, indexC) => {
         return (
           <div key={'column-'+ indexC}>
             {
-              column.map((rowCell, indexR) => {
+              columnC.map((rowCell, indexR) => {
                 return(
-                  <div style={{backgroundColor: rowCell == null ? cellColor : takenCell}} className='game-cell' key={'row-' + indexR}>
+                  <div onClick={handlePlacement} data-x={indexC} data-y={indexR} style={{backgroundColor: rowCell == null ? cellColor : takenCell}} className='game-cell' key={'row-' + indexR}>
                   {/* <p>{rowCell && rowCell.index}</p> */}
                   </div>
                 )

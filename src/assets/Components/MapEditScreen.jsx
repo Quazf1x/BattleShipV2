@@ -1,11 +1,11 @@
 import Grid from "./Grid"
 
-export default function MapEditScreen({ player }) {
+export default function MapEditScreen({ handlePlacement, player }) {
   return(
     <main className="map-edit-main">
       <h1>Place down your ships</h1>
       <div>
-        <Grid player={player} color='pink'/>
+        <Grid handlePlacement={handlePlacement} player={player} color='pink'/>
         <button>Start Game</button>
         
       </div>

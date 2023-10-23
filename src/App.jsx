@@ -5,14 +5,15 @@ import StartScreen from './assets/Components/StartScreen'
 import MapEditScreen from './assets/Components/MapEditScreen'
 import Player from './assets/Game logic/Player'
 
-let P1, P2;
+let P1, P2; // get rid off of variabler later
 
 function App() {
   const [gameState, setGameState] = useState('Start');
-  const [playerName, setPlayerName] = useState('');  
+  const [playerName, setPlayerName] = useState('');
+  const [playerOne, setPlayerOne] = useState('');
 
   const startGame = () => {
-    P1 = new Player(playerName);
+    setPlayerOne(new Player(playerName));
     P2 = new Player('AI');
     P2.board.autoPlaceFleet();
   }
@@ -26,6 +27,14 @@ function App() {
     setPlayerName(e.target.value);
   }
 
+  const handleShipPlacement = (e) => {
+    const x = parseInt(e.target.dataset.x);
+    const y = parseInt(e.target.dataset.y);
+    playerOne.board.placeShip(x, y, 3);
+    console.log(playerOne);
+    setPlayerOne({...playerOne});
+  }
+
   let screen;
 
   switch(gameState) {
@@ -33,10 +42,10 @@ function App() {
       screen = <StartScreen handleInput={handleNameChange} handleClick={handleStart}/>
       break;
     case 'Map Edit':
-      screen = <MapEditScreen player={P1}/>;
+      screen = <MapEditScreen handlePlacement={handleShipPlacement} player={playerOne}/>;
       break;
     case 'Game':
-      screen = <GameScreen player1={P1} player2={P2}/>
+      screen = <GameScreen player1={playerOne} player2={P2}/>
       break;
   }
 
