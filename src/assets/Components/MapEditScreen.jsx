@@ -7,19 +7,40 @@ export default function MapEditScreen({ handlePlacement, player }) {
   const [checkedShip, setCheckedShip] = useState('Carrier');
   const [carrierAmount, setCarrierAmount] = useState('1');
   const [battleshipAmount, setBattleshipAmount] = useState('1');
-  const [cruiserAmount, setCruiserAmount] = useState('2');
-  const [submarineAmount, setSubmarineAmount] = useState('3');
+  const [cruiserAmount, setCruiserAmount] = useState('1');
+  const [submarineAmount, setSubmarineAmount] = useState('2');
+  const [destroyerAmount, setDestroyerAmount] = useState('3');
 
   const onCheck = (e) => {
     const input = e.target.closest('input');
     setCheckedShip(input.value);
   }
 
+  const getShipState = (shipName) => {
+    switch(shipName) {
+      case 'carrier':
+        return carrierAmount;
+      break;
+      case 'battleship':
+        return battleshipAmount;
+      break;
+      case 'cruiser':
+        return cruiserAmount;
+      break;
+      case 'submarine':
+        return submarineAmount;
+      break;
+      case 'destroyer':
+        return destroyerAmount;
+      break;
+    }
+  }
+
   let radios = inputs.radios.map(radio => {
     return(
       <div key={radio.key}>
         <input onChange={onCheck} value={radio.labelName} name={radio.type} id={radio.id} type={radio.type} checked={checkedShip == radio.labelName}/>
-        <label htmlFor={radio.id}>{radio.labelName}</label>
+        <label htmlFor={radio.id}>{radio.labelName} x{getShipState(radio.labelName)}</label>
       </div>
     )
   });

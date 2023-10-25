@@ -6,7 +6,7 @@ const inputs = {
       id: 'carrier-radio',
       name: 'ship-radio',
       type: 'radio',
-      labelName: 'Carrier',
+      labelName: 'carrier',
       key: uuidv4()
     },
 
@@ -14,7 +14,7 @@ const inputs = {
       id: 'battleship-radio',
       name: 'ship-radio',
       type: 'radio',
-      labelName: 'Battleship',
+      labelName: 'battleship',
       key: uuidv4()
     },
 
@@ -22,7 +22,7 @@ const inputs = {
       id: 'cruiser-radio',
       name: 'ship-radio',
       type: 'radio',
-      labelName: 'Cruiser',
+      labelName: 'cruiser',
       key: uuidv4()
     },
 
@@ -30,7 +30,7 @@ const inputs = {
       id: 'submarine-radio',
       name: 'ship-radio',
       type: 'radio',
-      labelName: 'Submarine',
+      labelName: 'submarine',
       key: uuidv4()
     },
     
@@ -38,7 +38,7 @@ const inputs = {
       id: 'destroyer-radio',
       name: 'ship-radio',
       type: 'radio',
-      labelName: 'Destroyer',
+      labelName: 'destroyer',
       key: uuidv4()
     }
   ]

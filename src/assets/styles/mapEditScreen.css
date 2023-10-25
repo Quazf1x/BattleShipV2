@@ -21,6 +21,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  text-transform: uppercase;
   height: 100%;
 }
 
