@@ -5,35 +5,78 @@ import inputs from "../../shipRadiosData"
 export default function MapEditScreen({ handlePlacement, player }) {
 
   const [checkedShip, setCheckedShip] = useState('Carrier');
-  const [carrierAmount, setCarrierAmount] = useState('1');
-  const [battleshipAmount, setBattleshipAmount] = useState('1');
-  const [cruiserAmount, setCruiserAmount] = useState('1');
-  const [submarineAmount, setSubmarineAmount] = useState('2');
-  const [destroyerAmount, setDestroyerAmount] = useState('3');
+  const [carrierAmount, setCarrierAmount] = useState(1);
+  const [battleshipAmount, setBattleshipAmount] = useState(2);
+  const [cruiserAmount, setCruiserAmount] = useState(1);
+  const [submarineAmount, setSubmarineAmount] = useState(2);
+  const [destroyerAmount, setDestroyerAmount] = useState(3);
 
   const onCheck = (e) => {
     const input = e.target.closest('input');
     setCheckedShip(input.value);
   }
 
+  const updateShipState = (shipName, newValue) => {
+    switch(shipName) {
+      case 'Carrier':
+        setCarrierAmount(newValue);
+        break;
+      case 'Battleship':
+        setBattleshipAmount(newValue);
+        break;
+      case 'Cruiser':
+        setCruiserAmount(newValue);
+        break;
+      case 'Submarine':
+        setSubmarineAmount(newValue);
+        break;
+      case 'Destroyer':
+        setDestroyerAmount(newValue);
+        break;
+    }
+  }
+
   const getShipState = (shipName) => {
     switch(shipName) {
-      case 'carrier':
+      case 'Carrier':
         return carrierAmount;
-      break;
-      case 'battleship':
+      case 'Battleship':
         return battleshipAmount;
-      break;
-      case 'cruiser':
+      case 'Cruiser':
         return cruiserAmount;
-      break;
-      case 'submarine':
+      case 'Submarine':
         return submarineAmount;
-      break;
-      case 'destroyer':
+      case 'Destroyer':
         return destroyerAmount;
-      break;
     }
+  }
+
+  const getShipSize = (shipName) => {
+    switch(shipName) {
+      case 'Carrier':
+        return 5;
+      case 'Battleship':
+        return 4;
+      case 'Cruiser':
+        return 3;
+      case 'Submarine':
+        return 2;
+      case 'Destroyer':
+        return 1;
+    }
+  }
+
+  const decreaseShipAmount = (shipName) => {
+    let state = getShipState(shipName);
+    state--;
+    updateShipState(checkedShip, state);
+  }
+
+  const placeSizedShip = (e) => {
+    if(getShipState(checkedShip) <= 0) return;
+    const currentShipSize = getShipSize(checkedShip);
+    handlePlacement(e, currentShipSize);
+    decreaseShipAmount(checkedShip);
   }
 
   let radios = inputs.radios.map(radio => {
@@ -49,7 +92,7 @@ export default function MapEditScreen({ handlePlacement, player }) {
     <main className="map-edit-main">
       <h1>Place down your ships</h1>
       <div>
-        <Grid handleClick={handlePlacement} player={player} color='pink'/>
+        <Grid handleClick={placeSizedShip} player={player} color='pink'/>
         <div id='edit-buttons-wrapper'>
           {radios}
           <button id='start-game-btn'>Start Game</button>

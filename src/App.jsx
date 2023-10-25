@@ -26,11 +26,11 @@ function App() {
     setPlayerName(e.target.value);
   }
 
-  const handleShipPlacement = (e) => {
+  const handleShipPlacement = (e, size) => {
     const x = parseInt(e.target.dataset.x);
     const y = parseInt(e.target.dataset.y);
 
-    playerOne.board.placeShip(x, y, 5, 'Vertical');
+    playerOne.board.placeShip(x, y, size, 'Vertical');
     setPlayerOne({...playerOne});
   }
 
