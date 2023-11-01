@@ -30,8 +30,9 @@ function App() {
     const x = parseInt(e.target.dataset.x);
     const y = parseInt(e.target.dataset.y);
 
-    playerOne.board.placeShip(x, y, size, 'Vertical');
+    const isPlaced = playerOne.board.placeShip(x, y, size, 'Vertical');
     setPlayerOne({...playerOne});
+    return isPlaced;
   }
 
   let screen;
