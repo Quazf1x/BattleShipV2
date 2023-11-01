@@ -4,6 +4,7 @@ import inputs from "../../shipRadiosData"
 
 export default function MapEditScreen({ handlePlacement, player }) {
 
+  const [isHorizontal, setHorizontal] = useState(false);
   const [checkedShip, setCheckedShip] = useState('Carrier');
   const [ships, setShips] = useState({
     carrier:{
@@ -34,9 +35,14 @@ export default function MapEditScreen({ handlePlacement, player }) {
   });
 
   // Changed current ship
-  const onCheck = (e) => {
+  const handleCheck = (e) => {
     const input = e.target.closest('input');
     setCheckedShip(input.value);
+  }
+
+  // Switch ship direction
+  const handleSwitch = () => {
+    setHorizontal(!isHorizontal);
   }
 
   // Changes the remaining amount of ships that can be placed
@@ -60,7 +66,8 @@ export default function MapEditScreen({ handlePlacement, player }) {
     }
   }
 
-  const getShipState = (shipName) => {
+  // Returns the amount of a named ship that can be placed
+  const getShipAmount = (shipName) => {
     switch(shipName) {
       case 'Carrier':
         return ships.carrier.amount;
@@ -91,15 +98,17 @@ export default function MapEditScreen({ handlePlacement, player }) {
   }
 
   const decreaseShipAmount = (shipName) => {
-    let state = getShipState(shipName);
+    let state = getShipAmount(shipName);
     state--;
     updateShipAmount(checkedShip, state);
   }
 
+  //places the ship and updates state
   const placeSizedShip = (e) => {
-    if(getShipState(checkedShip) <= 0) return;
+    if(getShipAmount(checkedShip) <= 0) return;
     const currentShipSize = getShipSize(checkedShip);
-    const isPlaced = handlePlacement(e, currentShipSize);
+    const direction = isHorizontal ? 'Horizontal' : 'Vertical';
+    const isPlaced = handlePlacement(e, currentShipSize, direction);
     if(isPlaced) {
       decreaseShipAmount(checkedShip);
     }
@@ -108,8 +117,8 @@ export default function MapEditScreen({ handlePlacement, player }) {
   let radios = inputs.radios.map(radio => {
     return(
       <div key={radio.key}>
-        <input onChange={onCheck} value={radio.labelName} name={radio.type} id={radio.id} type={radio.type} checked={checkedShip == radio.labelName}/>
-        <label htmlFor={radio.id}>{radio.labelName} x{getShipState(radio.labelName)}</label>
+        <input onChange={handleCheck} value={radio.labelName} name={radio.type} id={radio.id} type={radio.type} checked={checkedShip == radio.labelName}/>
+        <label htmlFor={radio.id}>{radio.labelName} x{getShipAmount(radio.labelName)}</label>
       </div>
     )
   });
@@ -120,6 +129,10 @@ export default function MapEditScreen({ handlePlacement, player }) {
       <div>
         <Grid handleClick={placeSizedShip} player={player} color='pink'/>
         <div id='edit-buttons-wrapper'>
+          <div>
+            <input onChange={handleSwitch} id='vertical-switch' value={isHorizontal} type='checkbox'/>
+            <label htmlFor='vertical-switch'>Horizontal?</label>
+          </div>
           {radios}
           <button id='start-game-btn'>Start Game</button>
         </div>
