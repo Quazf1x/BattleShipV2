@@ -46,7 +46,7 @@ function App() {
       screen = <StartScreen handleInput={handleNameChange} handleClick={handleStart}/>
       break;
     case 'Map Edit':
-      screen = <MapEditScreen handlePlacement={handleShipPlacement} handleClick={handleEditFinish} player={playerOne}/>;
+      screen = <MapEditScreen handlePlacement={handleShipPlacement} handleStage={handleEditFinish} player={playerOne}/>;
       break;
     case 'Game':
       screen = <GameScreen player1={playerOne} player2={playerTwo}/>

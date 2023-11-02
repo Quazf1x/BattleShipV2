@@ -71,6 +71,7 @@ export default class Gameboard {
   }
 
   autoPlaceFleet() {
+    // array of all ships' lengths 
     const fleetLengths = [5, 4, 4, 3, 2, 2, 1, 1, 1];
     this.clearBoard();
     fleetLengths.forEach(length => this.autoPlaceShip(length));

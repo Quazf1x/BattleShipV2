@@ -2,7 +2,7 @@ import { useState } from "react";
 import Grid from "./Grid"
 import inputs from "../../shipRadiosData"
 
-export default function MapEditScreen({ handlePlacement, handleClick, player }) {
+export default function MapEditScreen({ handlePlacement, handleStage, player }) {
 
   const [isHorizontal, setHorizontal] = useState(false);
   const [checkedShip, setCheckedShip] = useState('Carrier');
@@ -112,6 +112,14 @@ export default function MapEditScreen({ handlePlacement, handleClick, player }) 
     if(isPlaced) {
       decreaseShipAmount(checkedShip);
     }
+  }
+
+  const handleClick = (e) => {
+    // Checking the state array so that every ship's amount is 0
+    for (const [key, value] of Object.entries(ships)) {
+      if(value.amount !== 0) return;
+    }
+    handleStage(e);
   }
 
   let radios = inputs.radios.map(radio => {
