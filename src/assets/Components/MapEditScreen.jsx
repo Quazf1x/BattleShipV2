@@ -2,7 +2,7 @@ import { useState } from "react";
 import Grid from "./Grid"
 import inputs from "../../shipRadiosData"
 
-export default function MapEditScreen({ handlePlacement, player }) {
+export default function MapEditScreen({ handlePlacement, handleClick, player }) {
 
   const [isHorizontal, setHorizontal] = useState(false);
   const [checkedShip, setCheckedShip] = useState('Carrier');
@@ -134,7 +134,7 @@ export default function MapEditScreen({ handlePlacement, player }) {
             <label htmlFor='vertical-switch'>Horizontal?</label>
           </div>
           {radios}
-          <button id='start-game-btn'>Start Game</button>
+          <button onClick={handleClick} id='start-game-btn'>Start Game</button>
         </div>
       </div>
     </main>

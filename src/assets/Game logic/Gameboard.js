@@ -71,10 +71,9 @@ export default class Gameboard {
   }
 
   autoPlaceFleet() {
+    const fleetLengths = [5, 4, 4, 3, 2, 2, 1, 1, 1];
     this.clearBoard();
-    for(let i = 1; i <= 5; i++) {
-      this.autoPlaceShip(i);
-    }
+    fleetLengths.forEach(length => this.autoPlaceShip(length));
   }
 
   areAllShipsSunk() {

@@ -22,6 +22,10 @@ function App() {
     setGameState('Map Edit');
   }
 
+  const handleEditFinish = () => {
+    setGameState('Game');
+  }
+
   const handleNameChange = (e) => {
     setPlayerName(e.target.value);
   }
@@ -42,7 +46,7 @@ function App() {
       screen = <StartScreen handleInput={handleNameChange} handleClick={handleStart}/>
       break;
     case 'Map Edit':
-      screen = <MapEditScreen handlePlacement={handleShipPlacement} player={playerOne}/>;
+      screen = <MapEditScreen handlePlacement={handleShipPlacement} handleClick={handleEditFinish} player={playerOne}/>;
       break;
     case 'Game':
       screen = <GameScreen player1={playerOne} player2={playerTwo}/>
