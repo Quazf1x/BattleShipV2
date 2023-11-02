@@ -39,6 +39,13 @@ function App() {
     return isPlaced;
   }
 
+  const handleGameboardAttack = (e) => {
+    const x = e.target.dataset.x;
+    const y = e.target.dataset.y;
+    if(playerTwo.board.boardArr[x][y] == null) e.target.textContent = 'O';
+    else e.target.textContent = 'X'
+  }
+
   let screen;
 
   switch(gameState) {
@@ -49,7 +56,7 @@ function App() {
       screen = <MapEditScreen handlePlacement={handleShipPlacement} handleStage={handleEditFinish} player={playerOne}/>;
       break;
     case 'Game':
-      screen = <GameScreen player1={playerOne} player2={playerTwo}/>
+      screen = <GameScreen handleClick={handleGameboardAttack} player1={playerOne} player2={playerTwo}/>
       break;
   }
 

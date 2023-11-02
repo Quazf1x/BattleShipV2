@@ -1,6 +1,6 @@
 import Grid from "./Grid";
 
-function PlayerCard({ player, color }) {
+function PlayerCard({ player, color, handleClick }) {
 
   const backgroundColor = color == 'pink' ? 'var(--bright-pink)' : 'var(--dark-grey)';
 
@@ -9,7 +9,7 @@ function PlayerCard({ player, color }) {
       <h2 style={{backgroundColor: backgroundColor}}>
         {player.name}
       </h2>
-      <Grid player={player} color={color}/>
+      <Grid player={player} color={color} handleClick={handleClick}/>
     </div>
   )
 }
