@@ -2,6 +2,19 @@ function Grid ({ player, color, handleClick }) {
 
   const cellColor = color == 'pink' ? 'var(--light-blue)' : 'var(--light-grey)';
   const takenCell = color == 'pink' ? 'var(--darker-blue)' : 'var(--grey)';
+  const sunkColor = 'var(--red)';
+
+  const setCellColor = (rowCell) => {
+    if(rowCell == null || rowCell == 'miss') {
+      return cellColor;
+    } 
+    else if(rowCell.ship.isSunk) {
+      return sunkColor;
+    } 
+    else {
+      return takenCell;
+    }
+  }
 
   return (
   <div className='game-grid'>
@@ -12,7 +25,7 @@ function Grid ({ player, color, handleClick }) {
             {
               columnC.map((rowCell, indexR) => {
                 return(
-                  <div onClick={handleClick} data-x={indexC} data-y={indexR} style={{backgroundColor: rowCell == null || rowCell == 'miss' ? cellColor : takenCell}} className='game-cell' key={'row-' + indexR}>
+                  <div onClick={handleClick} data-x={indexC} data-y={indexR} style={{backgroundColor: setCellColor(rowCell)}} className='game-cell' key={'row-' + indexR}>
                     {
                     player.board.boardArr[indexC][indexR] == 'miss' ? 
                     'O' :
