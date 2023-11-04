@@ -42,8 +42,8 @@ function App() {
   const handleGameboardAttack = (e) => {
     const x = e.target.dataset.x;
     const y = e.target.dataset.y;
-    if(playerTwo.board.boardArr[x][y] == null) e.target.textContent = 'O';
-    else e.target.textContent = 'X'
+    playerTwo.board.receiveAttack(x, y);
+    setPlayerTwo({...playerTwo});
   }
 
   let screen;

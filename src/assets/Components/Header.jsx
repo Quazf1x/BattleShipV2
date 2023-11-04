@@ -4,7 +4,7 @@ function Header() {
   return (
     <header>
       <div>
-        <img src={logo}></img>
+        <img src={logo}/>
         <h1 id='website-name'>Battleship</h1>
       </div>
     </header>

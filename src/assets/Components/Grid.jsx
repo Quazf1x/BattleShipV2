@@ -12,7 +12,13 @@ function Grid ({ player, color, handleClick }) {
             {
               columnC.map((rowCell, indexR) => {
                 return(
-                  <div onClick={handleClick} data-x={indexC} data-y={indexR} style={{backgroundColor: rowCell == null ? cellColor : takenCell}} className='game-cell' key={'row-' + indexR}>
+                  <div onClick={handleClick} data-x={indexC} data-y={indexR} style={{backgroundColor: rowCell == null || rowCell == 'miss' ? cellColor : takenCell}} className='game-cell' key={'row-' + indexR}>
+                    {
+                    player.board.boardArr[indexC][indexR] == 'miss' ? 
+                    'O' :
+                    player.board.boardArr[indexC][indexR] == null || !player.board.boardArr[indexC][indexR].isHit ?
+                    '' : 'X'
+                  }
                   </div>
                 )
               })

@@ -18,7 +18,7 @@ export default class Gameboard {
       this.boardArr[x][y] = 'miss';
       return;
     }
-    else if (this.boardArr[x][y].isHit) {
+    else if (this.boardArr[x][y].isHit || this.boardArr[x][y] == 'miss') {
       return;
     }
     else {
