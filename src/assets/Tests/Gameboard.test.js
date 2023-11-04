@@ -88,3 +88,10 @@ describe('Gameboard recieves hits correctly', () => {
     expect(gameboard.areAllShipsSunk()).toBeTruthy();
   })
 });
+
+// describe('Gameboard recieves hits correctly', () => {
+//   it('random hits are correct', () => {
+//     const [x, y] = gameboard.recieveRandomAttack();
+//     expect(gameboard.boardArr[x][y]).toBe('miss');
+//   });
+// });

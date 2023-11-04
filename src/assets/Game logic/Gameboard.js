@@ -27,6 +27,13 @@ export default class Gameboard {
     }
   }
 
+  //NOT FINISHED. WORKS BAD. WILL FINISH LATER.
+  receiveRandomAttack() {
+    const randomX = randomNumber(10);
+    const randomY = randomNumber(10);
+    this.receiveAttack(randomX, randomY);
+  }
+
   placeShip(x, y, length, direction = 'Horizontal') {
     let ship = new Ship(length, direction);
     let valid = this.checkValidity(x, y, ship);
