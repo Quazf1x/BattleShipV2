@@ -16,22 +16,25 @@ export default class Gameboard {
   receiveAttack(x, y) {
     if(this.boardArr[x][y] == null) {
       this.boardArr[x][y] = 'miss';
-      return;
+      return true;
     }
     else if (this.boardArr[x][y].isHit || this.boardArr[x][y] == 'miss') {
-      return;
+      return false;
     }
     else {
       this.boardArr[x][y].isHit = true;
       this.boardArr[x][y].ship.hit();
+      return true;
     }
   }
 
-  //NOT FINISHED. WORKS BAD. WILL FINISH LATER.
   receiveRandomAttack() {
-    const randomX = randomNumber(10);
-    const randomY = randomNumber(10);
-    this.receiveAttack(randomX, randomY);
+    let randomX;
+    let randomY;
+    do {
+      randomX  = randomNumber(10);
+      randomY = randomNumber(10);
+    } while(!this.receiveAttack(randomX, randomY));
   }
 
   placeShip(x, y, length, direction = 'Horizontal') {

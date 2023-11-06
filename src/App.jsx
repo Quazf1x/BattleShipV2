@@ -47,19 +47,22 @@ function App() {
 
   const attackPlayer = (x = 0, y = 0, player) => {
     if (player == playerTwo) {
-      playerTwo.board.receiveAttack(x, y);
+      const isValid = playerTwo.board.receiveAttack(x, y); //checking if the cell was already hit
+      if(isValid == false) return false;
       setPlayerTwo({...playerTwo});
     }
     else if (player == playerOne) {
       playerOne.board.receiveRandomAttack();
       setPlayerOne({...playerOne});
     }
+    return true;
   }
 
   const playRound = (e) => {
     const x = e.target.dataset.x;
     const y = e.target.dataset.y;
-    attackPlayer(x, y, playerTwo);
+    const isValid = attackPlayer(x, y, playerTwo); // var is false when user shot the cell that was already hit
+    if(!isValid) return; //if its false, breaks the round
     attackPlayer(x, y, playerOne); //random "ai" attack
   }
 
