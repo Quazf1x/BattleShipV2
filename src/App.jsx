@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import Header from "./assets/Components/Header";
-import GameScreen from "./assets/Components/GameScreen";
-import StartScreen from "./assets/Components/StartScreen";
-import MapEditScreen from "./assets/Components/MapEditScreen";
-import EndScreen from "./assets/Components/EndScreen";
-import Player from "./assets/Game logic/Player";
+import Header from "./assets/Components/Header.jsx";
+import GameScreen from "./assets/Components/GameScreen.jsx";
+import StartScreen from "./assets/Components/StartScreen.jsx";
+import MapEditScreen from "./assets/Components/MapEditScreen.jsx";
+import EndScreen from "./assets/Components/EndScreen.jsx";
+import Player from "./assets/Game logic/Player.jsx";
 
 function App() {
   const [gameState, setGameState] = useState("Start");

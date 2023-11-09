@@ -1,4 +1,4 @@
-import Ship from "./Ship";
+import Ship from "./Ship.js";
 import { randomNumber } from "./utils.js";
 
 const SIZE = 10;
