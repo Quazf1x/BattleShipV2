@@ -5,7 +5,7 @@ import GameScreen from "./assets/Components/GameScreen.jsx";
 import StartScreen from "./assets/Components/StartScreen.jsx";
 import MapEditScreen from "./assets/Components/MapEditScreen.jsx";
 import EndScreen from "./assets/Components/EndScreen.jsx";
-import Player from "./assets/Game logic/Player.jsx";
+import Player from "./assets/Game logic/Player.js";
 
 function App() {
   const [gameState, setGameState] = useState("Start");
