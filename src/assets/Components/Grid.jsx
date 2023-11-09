@@ -1,7 +1,7 @@
-function Grid ({ player, color, handleClick }) {
+function Grid ({ player, color, handleClick, isEnemy }) {
 
   const cellColor = color == 'pink' ? 'var(--light-blue)' : 'var(--light-grey)';
-  const takenCell = color == 'pink' ? 'var(--darker-blue)' : 'var(--grey)';
+  const takenCell = isEnemy ? cellColor : color == 'pink' ? 'var(--darker-blue)' : 'var(--grey)';
   const sunkColor = 'var(--red)';
 
   const setCellColor = (rowCell) => {

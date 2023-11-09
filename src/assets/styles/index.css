@@ -32,3 +32,8 @@ body {
   border: none;
   border-radius: 1rem;
 }
+
+.minor-text {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
