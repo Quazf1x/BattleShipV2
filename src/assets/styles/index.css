@@ -10,11 +10,11 @@
   --red: #ed7e7e;
 }
 
-*, 
+*,
 *::after,
 *::before {
   box-sizing: border-box;
-  font-family: 'Belanosima', sans-serif;
+  font-family: "Belanosima", sans-serif;
   margin: 0;
   padding: 0;
 }
