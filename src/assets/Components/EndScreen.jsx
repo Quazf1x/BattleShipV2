@@ -1,8 +1,9 @@
-function EndScreen() {
+function EndScreen({ winner }) {
   return(
-    <>
-      <h1>hewwo owo</h1>
-    </>
+    <main className="start-main">
+      <h1>{winner} won!</h1>
+      <button>Play again</button>
+    </main>
   )
 }
 

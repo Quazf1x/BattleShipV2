@@ -9,6 +9,7 @@ import Player from './assets/Game logic/Player'
 function App() {
   const [gameState, setGameState] = useState('Start');
   const [playerName, setPlayerName] = useState('');
+  const [winnerName, setWinnerName] = useState('-');
   const [playerOne, setPlayerOne] = useState('');
   const [playerTwo, setPlayerTwo] = useState(new Player('AI'));
 
@@ -26,7 +27,8 @@ function App() {
     setGameState('Game');
   }
 
-  const handleEnd = () => {
+  const handleEnd = (winner) => {
+    setWinnerName(winner);
     setGameState('End');
   }
 
@@ -57,12 +59,12 @@ function App() {
   }
 
   // if there's a winning player, function return them
-  const checkWin = (player1, player2) => {
+  const checkWinner = (player1, player2) => {
     if(player1.board.areAllShipsSunk()) {
-      return player1;
+      return player2.name;
     }
     else if (player2.board.areAllShipsSunk()) {
-      return player2;
+      return player1.name;
     }
     else return false;
   }
@@ -76,9 +78,9 @@ function App() {
 
     attackPlayer(x, y, playerOne); //random "ai" attack
 
-    //finish later
-    if(checkWin(playerOne, playerTwo) == playerTwo) {
-      handleEnd();
+    const winner = checkWinner(playerOne, playerTwo);
+    if(winner) {
+      handleEnd(winner);
     }
   }
 
@@ -95,7 +97,7 @@ function App() {
       screen = <GameScreen handleClick={playRound} player1={playerOne} player2={playerTwo}/>
       break;
     case 'End':
-      screen = <EndScreen/>
+      screen = <EndScreen winner={winnerName}/>
       break;
   }
 
